@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        #magic{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;            
+            grid-gap:20px;
+        }
+    </style>
+    </head>
+    <body>
+      
+        <script type="text/babel">
+            function X(){
+                var [pic,setpic] = React.useState(['./img/helmet-1.png', './img/potion-1.png', './img/ring-1.png', './img/scroll-1.png', './img/shield-1.png', './img/sword-1.png', './img/helmet-1.png', './img/potion-1.png', './img/ring-1.png', './img/scroll-1.png', './img/shield-1.png', './img/sword-1.png']);
+              var fc=null;
+              var sc;
+                function deal() {
+            
+            var points = [40, 100, 1, 5, 25, 10];
+            var picc=pic;
+            var i;
+            for (i = pic.length - 1; i > 0; i--) {
+              var  j = Math.floor(Math.random() * i)
+               
+            var k = picc[i]
+                picc[i] = picc[j]
+                picc[j] = k
+
+            }
+            setpic([...picc]);
+            console.log(pic);
+        }
+        function cal(t) {
+
+            var k=document.getElementsByTagName('img')[t];
+
+            k.src=pic[t];
+            console.log(t);
+            if(fc==null)
+            {
+                fc=t;
+            }
+            else {
+              
+                sc=t;
+               
+                if(pic[fc]==pic[sc])
+                { 
+                    var c=0;
+                    var p='file:///E:/Learn_React/img/cover.png';
+                    for(var i=0;i<12;i++)
+                    {
+                        var z=document.getElementsByTagName('img')[i];
+                        console.log(z.src);
+                        var kk=(z.src).localeCompare(p);
+                        console.log(kk);
+                        if(kk==0)
+                        {
+                            c=1;
+                            console.log('hmm')
+                        }
+                    }
+                    if(c==0)
+                    {
+                        setTimeout(() => {
+                            alert('You won');
+                        },600);
+                                
+                       
+                        
+                    }
+                    
+                }
+                else{
+                    
+                 
+                       setTimeout(()=>{
+                        document.getElementsByTagName('img')[fc].src='./img/cover.png'
+                        document.getElementsByTagName('img')[t].src='./img/cover.png'
+
+                       },400)
+                                             
+                                       }
+                                       setTimeout(()=>{
+                        fc=null;
+                         sc=null
+ 
+                       },500)
+            }
+           
+                    
+        }
+        return(
+<div>
+    <div><button onClick={deal}>DEAL</button></div>
+    <div id="magic">
+    {
+        pic.map((a,i)=>{
+           
+return(<div onClick={()=>{cal(i)}}><img src={'./img/cover.png'}/></div>)
+        })
+    }</div>
+    </div>
+        )
+            }
+            ReactDOM.render(<X></X>,document.querySelector('body'))
+        </script>
+    </body>
+</html>

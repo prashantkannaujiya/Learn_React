@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    </head>
+    <body>
+        <script type="text/babel">
+            var avg=0;
+           var kk=[' '];
+            
+            function Rating(){
+                var [rat,setrat]= React.useState('');
+                var ratt=[1,2,3,4,5]
+                
+var [counter,setcounter]=React.useState([]);
+
+function avgg(){
+    var sum=0;
+for(var i=0;i<counter.length;i++)
+{
+sum=sum+counter[i];
+}
+avg=sum/counter.length;
+if(counter.length==0)
+{
+    avg=0;
+}
+console.log(avg)
+return (<b>{avg}</b>)
+            }
+
+
+                function count(t){
+
+                  
+                    setrat(t);
+                    setcounter([...counter,t]);
+                }
+                return(
+                    <div>
+                        <h1>Please give your ratings</h1>
+                       <button onClick={()=>{count(1)}}>1</button>
+                        <button onClick={()=>{count(2)}}>2</button>
+                        <button onClick={()=>{count(3)}}>3</button>
+                        <button onClick={()=>{count(4)}}>4</button>
+                        <button onClick={()=>{count(5)}}>5</button>
+                        <h2>Rating given is : {rat} </h2>
+                        {
+                           ratt.map((a)=>
+                           {
+                                var c=0;
+                                for(var i=0;i<counter.length;i++){
+                                    if(counter[i]==a)
+                                    {
+                                        c++;
+                                    }
+                                }
+                                return(<b><p>{a} = {c}</p></b>);
+                                
+                            })
+                        }
+                        <h2>The Average rating :{avgg()}</h2>
+                                              
+                    
+                        
+                        </div>
+                )
+            }
+            ReactDOM.render(<Rating></Rating>,document.querySelector('body'))
+        </script>
+    </body>
+</html>

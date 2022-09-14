@@ -1,0 +1,26 @@
+<html>
+<head>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+    <script type="text/babel">
+        var X=function(){
+            var [check,setcheck]=React.useState(null)
+            function add(){
+                
+                var k=document.querySelector('#in').value;
+setcheck(k);
+            }
+           return( <div>
+            <input id="in" type="text"/>
+<button onClick={add}>Enter</button>
+            <li>{check}</li>
+        </div>)}
+        ReactDOM.render(<X></X>,document.querySelector('body'))
+           
+    </script>
+</body>
+</html>

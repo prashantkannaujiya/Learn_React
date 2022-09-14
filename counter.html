@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    </head>
+    <body>
+        <script type="text/babel">
+function X(){
+    var [count,setcount]=React.useState(0);
+    function counter(z){
+        console.log(z);
+        setcount(count+z);
+    }
+    return(
+        <div>
+            <div>Count {count}</div>
+            <br/>
+            <button onClick={(e)=>{counter(e.target)}}>Inc</button>
+            <button onClick={()=>{counter(-1)}}>Dec</button>
+            </div>
+    )
+}
+ReactDOM.render(<X></X>,document.querySelector('body'))
+        </script>
+    </body>
+</html>
